@@ -46,7 +46,7 @@ public class MovieJsonAdapter {
             try {
                 JSONObject f = (JSONObject) jFilms.get(i);
                 dateStr = f.getString("release_date");
-                if (dateStr != null) {
+                if (dateStr != null && !dateStr.equalsIgnoreCase("null")) {
                     releaseDate = sdf.parse(dateStr);
                 }
                 Movie film = new Movie(f.getString("title"),
