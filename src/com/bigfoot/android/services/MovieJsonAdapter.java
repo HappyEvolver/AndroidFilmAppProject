@@ -42,10 +42,13 @@ public class MovieJsonAdapter {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         for (int i = 0; i < jFilms.length(); i++) {
             String dateStr = null;
+            Date releaseDate = null;
             try {
                 JSONObject f = (JSONObject) jFilms.get(i);
                 dateStr = f.getString("release_date");
-                Date releaseDate = sdf.parse(dateStr);
+                if (dateStr != null) {
+                    releaseDate = sdf.parse(dateStr);
+                }
                 Movie film = new Movie(f.getString("title"),
                                        f.getInt("id"),
                                        f.getString("original_title"),
