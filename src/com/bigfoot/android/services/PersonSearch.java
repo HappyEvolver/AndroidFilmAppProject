@@ -18,6 +18,6 @@ public class PersonSearch extends GenericMoviedbSearch<Person> {
     }
 
     protected List<Person> buildListFromJSON(String json) {
-        return new PersonJsonAdapter().getPeopleFromJsonExplicitly(json);
+        return new PersonJsonAdapter().getPeopleFromJson(json);
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class MovieJsonAdapter {
 
-    public List<Movie> getFilmsFromJsonExplicitly(String json) {
+    public List<Movie> getFilmsFromJson(String json) {
         if (json == null || (json.length() == 0)) {
             return Collections.emptyList();
         }

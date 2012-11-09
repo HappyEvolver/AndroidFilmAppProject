@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class PersonJsonAdapter {
 
-    public List<Person> getPeopleFromJsonExplicitly(String json) {
+    public List<Person> getPeopleFromJson(String json) {
         if (json == null || (json.length() == 0)) {
             return Collections.emptyList();
         }

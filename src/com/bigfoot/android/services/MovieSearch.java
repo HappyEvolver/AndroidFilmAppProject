@@ -19,6 +19,6 @@ public class MovieSearch extends GenericMoviedbSearch<Movie> {
 
     @Override
     protected List<Movie> buildListFromJSON(String json) {
-        return new MovieJsonAdapter().getFilmsFromJsonExplicitly(json);
+        return new MovieJsonAdapter().getFilmsFromJson(json);
     }
 }
