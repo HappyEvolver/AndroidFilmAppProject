@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidFilmApp</string>
+    <string name="search"> Search  </string>
+    <string name="movies">  Films</string>
+    <string name="people">  People</string>
+    <string name="film_list_name">Film Search Results</string>
+    <string name="people_list_name">People Search Results</string>
+    <string name="no_films_found">No films found matching your search</string>
+    <string name="no_people_found">No people found matching your search</string>
+</resources>
