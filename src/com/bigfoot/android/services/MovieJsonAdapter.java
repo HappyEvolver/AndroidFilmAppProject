@@ -24,7 +24,7 @@ public class MovieJsonAdapter {
 
     public List<Movie> getFilmsFromJson(String json) {
         if (json == null || (json.length() == 0)) {
-            return Collections.emptyList();
+            return new ArrayList<Movie>(0);
         }
 
         JSONArray jFilms = null;
@@ -35,7 +35,7 @@ public class MovieJsonAdapter {
             Log.e(getClass().getSimpleName(), "Error parsing JSON: " + json, e);
         }
         if (jFilms == null) {
-            return Collections.emptyList();
+            return new ArrayList<Movie>(0);
         }
 
         List<Movie> films = new ArrayList<Movie>(jFilms.length());

@@ -21,7 +21,7 @@ public class PersonJsonAdapter {
 
     public List<Person> getPeopleFromJson(String json) {
         if (json == null || (json.length() == 0)) {
-            return Collections.emptyList();
+            return new ArrayList<Person>(0);
         }
 
         JSONArray jPeople = null;
@@ -32,7 +32,7 @@ public class PersonJsonAdapter {
             Log.e(getClass().getSimpleName(), "Error parsing JSON " + json, e);
         }
         if (jPeople == null) {
-            return Collections.emptyList();
+            return new ArrayList<Person>(0);
         }
 
         List<Person> people = new ArrayList<Person>(jPeople.length());
