@@ -15,7 +15,7 @@
 
                android:contentDescription="@string/poster_content_desc"/>
 
-    <TextView android:id="@+id/name_text_view"
+    <TextView android:id="@+id/film_title_text_view"
               android:layout_width="fill_parent"
               android:layout_height="26dip"
               android:layout_toRightOf="@id/film_poster_icon"
@@ -26,12 +26,12 @@
               android:ellipsize="marquee"
               android:textStyle="bold"/>
 
-    <TextView android:id="@+id/alternate_name_text_view"
+    <TextView android:id="@+id/alternate_title_text_view"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_toRightOf="@id/film_poster_icon"
               android:layout_alignParentRight="true"
-              android:layout_below="@id/name_text_view"
+              android:layout_below="@id/film_title_text_view"
 
               android:singleLine="true"
               android:ellipsize="marquee"
@@ -42,7 +42,7 @@
               android:layout_height="wrap_content"
               android:layout_toRightOf="@id/film_poster_icon"
               android:layout_alignParentRight="true"
-              android:layout_below="@id/alternate_name_text_view"
+              android:layout_below="@id/alternate_title_text_view"
               android:layout_alignWithParentIfMissing="true"
 
               android:singleLine="true"

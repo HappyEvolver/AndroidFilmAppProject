@@ -48,5 +48,7 @@ public class FilmListActivity extends ListActivity {
         super.onListItemClick(lv, v, position, id);
         Movie film = filmsAdapter.getItem(position);
         Toast.makeText(this, "Now showing: " + film.toString(), Toast.LENGTH_LONG).show();
+
+        int filmId = film.getId();
     }
 }

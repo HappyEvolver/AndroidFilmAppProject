@@ -9,5 +9,6 @@
     <string name="no_films_found">No films found matching your search</string>
     <string name="no_people_found">No people found matching your search</string>
 
-    <string name="poster_content_desc">Poster</string>
+    <string name="poster_content_desc">Film poster</string>
+    <string name="person_thumb_content_desc">Person thumbnail image</string>
 </resources>

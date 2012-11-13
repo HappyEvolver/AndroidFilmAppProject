@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.bigfoot.android.model.Person;
+import com.bigfoot.android.ui.PersonListAdapter;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -35,9 +36,10 @@ public class PeopleListActivity extends ListActivity {
         //noinspection unchecked
         peopleList = (List<Person>) extras;
         }
-        peopleAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, peopleList);
+        peopleAdapter = new PersonListAdapter(this, R.layout.person_row, peopleList);
 
         setListAdapter(peopleAdapter);
+        peopleAdapter.notifyDataSetChanged();
     }
 
     @Override

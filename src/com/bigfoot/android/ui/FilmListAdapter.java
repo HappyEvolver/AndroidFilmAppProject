@@ -24,7 +24,8 @@ import java.util.List;
  */
 public class FilmListAdapter extends ArrayAdapter<Movie> {
 
-    private static final String IMG_THUMB_BASE_URL = "http://cf2.imgobject.com/t/p/w92";
+    public static final String IMG_THUMB_BASE_URL = "http://cf2.imgobject.com/t/p";
+    private static final String IMAGE_SIZE = "/w92";
     private Activity context;
     private List<Movie> films;
 
@@ -49,11 +50,11 @@ public class FilmListAdapter extends ArrayAdapter<Movie> {
             AQuery aq = new AQuery(view);
 
             // Title
-            TextView titleView = (TextView) view.findViewById(R.id.name_text_view);
+            TextView titleView = (TextView) view.findViewById(R.id.film_title_text_view);
             titleView.setText(film.getTitle());
 
             // Original title
-            TextView originalTitleView = (TextView) view.findViewById(R.id.alternate_name_text_view);
+            TextView originalTitleView = (TextView) view.findViewById(R.id.alternate_title_text_view);
             if (film.getOriginalTitleIfDifferent() != null) {
                 originalTitleView.setText("Original title: " + film.getOriginalTitle());
             }
@@ -77,7 +78,7 @@ public class FilmListAdapter extends ArrayAdapter<Movie> {
             voteView.setText("Vote average: " + nf.format(film.getVoteAverage()));
 
             // Poster thumbnail
-            String url = IMG_THUMB_BASE_URL + film.getPosterPath();
+            String url = IMG_THUMB_BASE_URL + IMAGE_SIZE + film.getPosterPath();
             aq.id(R.id.film_poster_icon).image(url, true, false);
         }
 
