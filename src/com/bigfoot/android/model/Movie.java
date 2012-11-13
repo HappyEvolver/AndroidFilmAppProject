@@ -49,6 +49,19 @@ public class Movie implements Serializable {
         return originalTitle;
     }
 
+    /**
+     * Gets the original title of the film, if it is non-null and different from
+     * the current title. Otherwise returns {@code null}.
+     *
+     * @return the original title of the film, if different from the current title.
+     */
+    public String getOriginalTitleIfDifferent() {
+        if (originalTitle != null && ! originalTitle.equals(title)) {
+            return originalTitle;
+        }
+        return null;
+    }
+
     public boolean isAdult() {
         return adult;
     }
@@ -76,7 +89,7 @@ public class Movie implements Serializable {
         sb.append(id)
                 .append(": ")
                 .append(title);
-        if (originalTitle != null && ! originalTitle.equals(title)) {
+        if (getOriginalTitleIfDifferent() != null) {
             sb.append(" (originally ")
               .append(originalTitle)
               .append(")");

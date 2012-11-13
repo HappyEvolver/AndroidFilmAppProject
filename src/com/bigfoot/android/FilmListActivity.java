@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.bigfoot.android.model.Movie;
+import com.bigfoot.android.ui.FilmListAdapter;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -33,12 +34,13 @@ public class FilmListActivity extends ListActivity {
             filmList = Collections.emptyList();
         }
         else {
-        //noinspection unchecked
+            //noinspection unchecked
             filmList = (List<Movie>) extras;
         }
-        filmsAdapter = new ArrayAdapter<Movie>(this, android.R.layout.simple_list_item_1, filmList);
+        filmsAdapter = new FilmListAdapter(this, android.R.layout.simple_list_item_1, filmList);
 
         setListAdapter(filmsAdapter);
+        filmsAdapter.notifyDataSetChanged();
     }
 
     @Override

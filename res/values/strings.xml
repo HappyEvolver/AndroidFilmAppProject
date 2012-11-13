@@ -8,4 +8,6 @@
     <string name="people_list_name">People Search Results</string>
     <string name="no_films_found">No films found matching your search</string>
     <string name="no_people_found">No people found matching your search</string>
+
+    <string name="poster_content_desc">Poster</string>
 </resources>
