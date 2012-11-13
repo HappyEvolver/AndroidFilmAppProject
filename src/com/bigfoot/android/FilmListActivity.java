@@ -37,7 +37,7 @@ public class FilmListActivity extends ListActivity {
             //noinspection unchecked
             filmList = (List<Movie>) extras;
         }
-        filmsAdapter = new FilmListAdapter(this, android.R.layout.simple_list_item_1, filmList);
+        filmsAdapter = new FilmListAdapter(this, R.layout.film_data_row, filmList);
 
         setListAdapter(filmsAdapter);
         filmsAdapter.notifyDataSetChanged();

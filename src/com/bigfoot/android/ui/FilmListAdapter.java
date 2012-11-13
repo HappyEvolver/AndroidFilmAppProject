@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+import com.androidquery.AQuery;
 import com.bigfoot.android.R;
 import com.bigfoot.android.model.Movie;
 
@@ -24,6 +24,7 @@ import java.util.List;
  */
 public class FilmListAdapter extends ArrayAdapter<Movie> {
 
+    private static final String IMG_THUMB_BASE_URL = "http://cf2.imgobject.com/t/p/w92";
     private Activity context;
     private List<Movie> films;
 
@@ -44,10 +45,21 @@ public class FilmListAdapter extends ArrayAdapter<Movie> {
         if (film != null) {
             DateFormat df = new SimpleDateFormat("dd MMM yyyy");
             NumberFormat nf = new DecimalFormat("0.00");
+            // AQuery handles all image retrieval, decoding and caching transparently.
+            AQuery aq = new AQuery(view);
 
             // Title
             TextView titleView = (TextView) view.findViewById(R.id.name_text_view);
             titleView.setText(film.getTitle());
+
+            // Original title
+            TextView originalTitleView = (TextView) view.findViewById(R.id.alternate_name_text_view);
+            if (film.getOriginalTitleIfDifferent() != null) {
+                originalTitleView.setText("Original title: " + film.getOriginalTitle());
+            }
+            else {
+                originalTitleView.setVisibility(View.GONE);
+            }
 
             // Release date
             TextView releaseDateView = (TextView) view.findViewById(R.id.release_date_text_view);
@@ -60,22 +72,13 @@ public class FilmListAdapter extends ArrayAdapter<Movie> {
             }
             releaseDateView.setText(sb.toString());
 
-            // Original title
-            TextView originalTitleView = (TextView) view.findViewById(R.id.alternate_name_text_view);
-            if (film.getOriginalTitleIfDifferent() != null) {
-                originalTitleView.setText("Original title: " + film.getOriginalTitle());
-            }
-            else {
-                originalTitleView.setVisibility(View.GONE);
-            }
-
             // Vote
             TextView voteView = (TextView) view.findViewById(R.id.vote_text_view);
             voteView.setText("Vote average: " + nf.format(film.getVoteAverage()));
 
             // Poster thumbnail
-            ImageView posterView = (ImageView) view.findViewById(R.id.film_poster_icon);
-            posterView.setImageBitmap(null);
+            String url = IMG_THUMB_BASE_URL + film.getPosterPath();
+            aq.id(R.id.film_poster_icon).image(url, true, false);
         }
 
         return view;
