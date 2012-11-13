@@ -19,18 +19,22 @@ public class Movie implements Serializable {
     private String originalTitle;
     private boolean adult;
     private double popularity;
+    private double voteAverage;
     private Date releaseDate;
+    private String posterPath;
 
     public Movie() {
     }
 
-    public Movie(String title, int id, String originalTitle, boolean adult, double popularity, Date releaseDate) {
+    public Movie(String title, int id, String originalTitle, boolean adult, double popularity, double voteAverage, Date releaseDate, String posterPath) {
         this.title = title;
         this.id = id;
         this.originalTitle = originalTitle;
         this.adult = adult;
         this.popularity = popularity;
+        this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
+        this.posterPath = posterPath;
     }
 
     public String getTitle() {
@@ -53,8 +57,16 @@ public class Movie implements Serializable {
         return popularity;
     }
 
+    public double getVoteAverage() {
+        return voteAverage;
+    }
+
     public Date getReleaseDate() {
         return releaseDate;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
     }
 
     public String toString() {
@@ -72,10 +84,17 @@ public class Movie implements Serializable {
         if (adult) {
             sb.append(". Adult rated");
         }
-        sb.append(". Released ")
-                .append(sdf.format(releaseDate))
-                .append(". Popularity: ")
-                .append(nf.format(popularity));
+        sb.append(". Released ");
+        if (releaseDate == null) {
+            sb.append("(unknown)");
+        }
+        else {
+            sb.append(sdf.format(releaseDate));
+        }
+        sb.append(". Popularity: ")
+            .append(nf.format(popularity))
+            .append(", vote: ")
+            .append(nf.format(voteAverage));
 
         return sb.toString();
     }

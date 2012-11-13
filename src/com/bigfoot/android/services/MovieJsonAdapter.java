@@ -11,7 +11,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +53,9 @@ public class MovieJsonAdapter {
                                        f.getString("original_title"),
                                        f.getBoolean("adult"),
                                        f.getDouble("popularity"),
-                                       releaseDate);
+                                       f.getDouble("vote_average"),
+                                       releaseDate,
+                                       f.getString("poster_path"));
 
                 films.add(film);
             } catch (JSONException e) {
