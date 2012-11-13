@@ -14,7 +14,7 @@ public class MovieSearch extends GenericMoviedbSearch<Movie> {
 
     @Override
     protected String getSearchType() {
-        return "movie";
+        return "search/movie";
     }
 
     @Override

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.bigfoot.android.model.Movie;
+import com.bigfoot.android.services.SearchType;
 import com.bigfoot.android.ui.FilmListAdapter;
 
 import java.io.Serializable;
@@ -47,8 +47,7 @@ public class FilmListActivity extends ListActivity {
     public void onListItemClick(ListView lv, View v, int position, long id) {
         super.onListItemClick(lv, v, position, id);
         Movie film = filmsAdapter.getItem(position);
-        Toast.makeText(this, "Now showing: " + film.toString(), Toast.LENGTH_LONG).show();
-
-        int filmId = film.getId();
+        LocateWebPageTask task = new LocateWebPageTask(this);
+        task.execute(SearchType.FILM.name(), Integer.toString(film.getId()));
     }
 }

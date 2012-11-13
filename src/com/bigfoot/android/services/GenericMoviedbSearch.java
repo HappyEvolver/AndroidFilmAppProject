@@ -15,10 +15,16 @@ import java.util.List;
  */
 public abstract class GenericMoviedbSearch<E> {
 
-    private static final String BASE_URL = "http://api.themoviedb.org/3/search/";
+    private static final String BASE_URL = "http://api.themoviedb.org/3/";
     private static final String API_KEY = "c615d8f79f88d6ede76a61331cd7ef54";
     private static final String CHARSET_NAME = "UTF-8";
 
+    /**
+     * Performs a search on The Movie Db.
+     * @param query a query string.
+     * @param maxResults the max number of results to return. Unlimited if {@code 0}.
+     * @return a list of the appropriate type.
+     */
     public List<E> search(String query, int maxResults) {
         List<E> fullList = retrieveData(query);
 

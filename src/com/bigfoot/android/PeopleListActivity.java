@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.bigfoot.android.model.Person;
+import com.bigfoot.android.services.SearchType;
 import com.bigfoot.android.ui.PersonListAdapter;
 
 import java.io.Serializable;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * Activity to list a set of people, typically the results of a search.
  * User: Neil Pattinson
  * Date: 01/11/12
  * Time: 19:53
@@ -46,6 +46,7 @@ public class PeopleListActivity extends ListActivity {
     public void onListItemClick(ListView lv, View v, int position, long id) {
         super.onListItemClick(lv, v, position, id);
         Person person = peopleAdapter.getItem(position);
-        Toast.makeText(this, "You selected: " + person.toString(), Toast.LENGTH_LONG).show();
+        LocateWebPageTask task = new LocateWebPageTask(this);
+        task.execute(SearchType.PERSON.name(), Integer.toString(person.getId()));
     }
 }

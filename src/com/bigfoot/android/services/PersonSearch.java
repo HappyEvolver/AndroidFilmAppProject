@@ -14,7 +14,7 @@ public class PersonSearch extends GenericMoviedbSearch<Person> {
 
     @Override
     protected String getSearchType() {
-        return "person";
+        return "search/person";
     }
 
     protected List<Person> buildListFromJSON(String json) {
