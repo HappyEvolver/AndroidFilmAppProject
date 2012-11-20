@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.bigfoot.android.model.Person;
 import com.bigfoot.android.services.SearchType;
 import com.bigfoot.android.ui.PersonListAdapter;
@@ -27,19 +28,24 @@ public class PeopleListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.people_layout);
 
-        Serializable extras = getIntent().getSerializableExtra("people");
+        Serializable peopleExtra = getIntent().getSerializableExtra("people");
         List<Person> peopleList;
-        if (extras == null) {
+        if (peopleExtra == null) {
             peopleList = Collections.emptyList();
         }
         else {
-        //noinspection unchecked
-        peopleList = (List<Person>) extras;
+            //noinspection unchecked
+            peopleList = (List<Person>) peopleExtra;
         }
+        String queryExtra = getIntent().getStringExtra("query");
+
         peopleAdapter = new PersonListAdapter(this, R.layout.person_row, peopleList);
 
         setListAdapter(peopleAdapter);
         peopleAdapter.notifyDataSetChanged();
+
+        TextView header = (TextView) findViewById(R.id.people_header);
+        header.setText("Results for '" + queryExtra + "'");
     }
 
     @Override

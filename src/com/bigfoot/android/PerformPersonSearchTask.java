@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import com.bigfoot.android.model.Person;
 import com.bigfoot.android.services.GenericMoviedbSearch;
 import com.bigfoot.android.services.PersonSearch;
@@ -21,6 +22,7 @@ public class PerformPersonSearchTask extends AsyncTask<String, Void, List<Person
 
     private ProgressDialog progress;
     private Context ctx;
+    private String query;
 
     public PerformPersonSearchTask(Context ctx) {
         this.ctx = ctx;
@@ -32,16 +34,25 @@ public class PerformPersonSearchTask extends AsyncTask<String, Void, List<Person
 
     @Override
     protected List<Person> doInBackground(String... params) {
-        String queryArg = params[0];
+        query = params[0];
         GenericMoviedbSearch<Person> searchService = new PersonSearch();
-        return searchService.search(queryArg, 0);
+        return searchService.search(query, 0);
     }
 
+    @Override
     protected void onPostExecute(final List<Person> results) {
         progress.dismiss();
 
         Intent intent = new Intent(ctx, PeopleListActivity.class);
         intent.putExtra("people", ((ArrayList<Person>) results));
+        intent.putExtra("query", query);
         ctx.startActivity(intent);
+    }
+
+    @Override
+    protected void onCancelled() {
+        Log.i(getClass().getName(), "Cancelled");
+        progress.dismiss();
+        super.onCancelled();
     }
 }
