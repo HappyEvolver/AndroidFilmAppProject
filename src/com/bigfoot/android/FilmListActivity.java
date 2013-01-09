@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.bigfoot.android.model.Movie;
 import com.bigfoot.android.services.SearchType;
 import com.bigfoot.android.ui.FilmListAdapter;
@@ -37,10 +38,15 @@ public class FilmListActivity extends ListActivity {
             //noinspection unchecked
             filmList = (List<Movie>) extras;
         }
+        String queryExtra = getIntent().getStringExtra("query");
+
         filmsAdapter = new FilmListAdapter(this, R.layout.film_data_row, filmList);
 
         setListAdapter(filmsAdapter);
         filmsAdapter.notifyDataSetChanged();
+
+        TextView header = (TextView) findViewById(R.id.film_header);
+        header.setText("Results for '" + queryExtra + "'");
     }
 
     @Override

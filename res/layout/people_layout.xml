@@ -9,7 +9,8 @@
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:textStyle="italic"
-              android:layout_marginRight="6dip"/>
+              android:textColor="#ffffaa"
+              android:layout_marginLeft="16dip"/>
 
     <ListView
             android:id="@+id/android:list"
