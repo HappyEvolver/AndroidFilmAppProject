@@ -30,6 +30,7 @@ public class PerformPersonSearchTask extends AsyncTask<String, Void, List<Person
 
     protected void onPreExecute() {
         progress = ProgressDialog.show(ctx,"Wait!","Searching for people...",true);
+        super.onPreExecute();
     }
 
     @Override
@@ -41,6 +42,7 @@ public class PerformPersonSearchTask extends AsyncTask<String, Void, List<Person
 
     @Override
     protected void onPostExecute(final List<Person> results) {
+        super.onPostExecute(results);
         progress.dismiss();
 
         Intent intent = new Intent(ctx, PeopleListActivity.class);

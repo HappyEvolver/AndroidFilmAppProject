@@ -30,6 +30,7 @@ public class PerformFilmSearchTask extends AsyncTask<String, Void, List<Movie>> 
 
     protected void onPreExecute() {
         progress = ProgressDialog.show(ctx, "Wait!", "Searching for films...", true);
+        super.onPreExecute();
     }
 
     @Override
@@ -41,6 +42,7 @@ public class PerformFilmSearchTask extends AsyncTask<String, Void, List<Movie>> 
 
     @Override
     protected void onPostExecute(final List<Movie> results) {
+        super.onPostExecute(results);
         progress.dismiss();
 
         Intent intent = new Intent(ctx, FilmListActivity.class);
