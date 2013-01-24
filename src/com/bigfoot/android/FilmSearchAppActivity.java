@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,7 +33,7 @@ public class FilmSearchAppActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // Tell AQUtility about context: it can use this globally...
+        // Tell AQUtility about context: it can use this globally...which is really handy!
         AQUtility.setContext(getApplication());
         // Load default preferences
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
@@ -90,6 +91,7 @@ public class FilmSearchAppActivity extends Activity {
 
             // Item not recognised...
             default:
+                Log.e(getLocalClassName(), "Weird! Unrecognised menu option..." + item.getTitle());
                 return super.onOptionsItemSelected(item);
         }
     }
