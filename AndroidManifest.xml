@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.bigfoot.android"
-          android:versionCode="3"
-          android:versionName="1.2">
+          android:versionCode="4"
+          android:versionName="1.3">
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher_megaphone">
@@ -15,5 +15,6 @@
         </activity>
         <activity android:name=".FilmListActivity" android:label="@string/film_list_name"/>
         <activity android:name=".PeopleListActivity" android:label="@string/people_list_name"/>
+        <activity android:name=".SettingsActivity" android:label="@string/settings_label"/>
     </application>
 </manifest>

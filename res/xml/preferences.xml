@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_common_category"
+                        android:key="pref_key_common_settings">
+        <CheckBoxPreference android:key="pref_exclude_adult"
+                            android:title="@string/pref_excl_adult_title"
+                            android:summary="@string/pref_excl_adult_summary"
+                            android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_movie_category"
+                        android:key="pref_key_movie_settings">
+        <CheckBoxPreference android:key="pref_this_century"
+                            android:title="@string/pref_this_century_title"
+                            android:summary="@string/pref_this_century_summary"
+                            android:defaultValue="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>

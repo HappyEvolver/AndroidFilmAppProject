@@ -1,6 +1,9 @@
 package com.bigfoot.android.services;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
+import com.androidquery.util.AQUtility;
+import com.bigfoot.android.SettingsActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -57,6 +60,12 @@ public abstract class GenericMoviedbSearch<E> {
             throw new RuntimeException(e);
         }
         String url = BASE_URL + getSearchType() + "?api_key=" + API_KEY + "&query=" + encodedQuery + "&page=1";
+
+        if (PreferenceManager.getDefaultSharedPreferences(AQUtility.getContext()).getBoolean(SettingsActivity.PREF_EXCLUDE_ADULT, false)) {
+            Log.i(getClass().getSimpleName(), "Excluding adult titles");
+            url += "&include_adult=false";
+        }
+
         Log.i(getClass().getSimpleName(), "Request: " + url);
         String response = new RemoteDataService().getStringFrom(url);
         Log.i(getClass().getSimpleName(), "Response: " + response);

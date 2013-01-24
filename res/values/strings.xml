@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidFilmApp</string>
+
     <string name="search"> Search  </string>
     <string name="movies">  Films</string>
     <string name="people">  People</string>
@@ -11,4 +12,25 @@
 
     <string name="poster_content_desc">Film poster</string>
     <string name="person_thumb_content_desc">Person thumbnail image</string>
+
+    <!-- Settings-related -->
+    <string name="settings_label">Settings</string>
+    <string name="pref_common_category">Common</string>
+    <string name="pref_excl_adult_title">Exclude adult films</string>
+    <string name="pref_excl_adult_summary">Exclude films with adult content from all search results</string>
+    <string name="pref_movie_category">Movies</string>
+    <string name="pref_this_century_title">This century only</string>
+    <string name="pref_this_century_summary">Only show films released since 2000</string>
+
+    <!-- Menu items -->
+    <string name="menu_settings_title">Settings…</string>
+    <string name="menu_about_title">About</string>
+
+    <!-- About dialog -->
+    <string name="app_description">This is Neil\'s wonderful film search app, using The Movie Database. Copyright Big
+        Foot Computing Ltd 2013
+    </string>
+    <string name="icon_desc">Icon</string>
+    <string name="about_ok_btn_text">OK</string>
+    <string name="about_title">About this app</string>
 </resources>

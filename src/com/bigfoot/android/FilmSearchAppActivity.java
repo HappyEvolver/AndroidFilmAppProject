@@ -1,9 +1,17 @@
 package com.bigfoot.android;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.androidquery.util.AQUtility;
+import com.bigfoot.android.ui.AboutDialog;
 
 /**
  * Master activity class for film search app.
@@ -23,6 +31,11 @@ public class FilmSearchAppActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // Tell AQUtility about context: it can use this globally...
+        AQUtility.setContext(getApplication());
+        // Load default preferences
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         findAllViewsById();
 
@@ -53,6 +66,32 @@ public class FilmSearchAppActivity extends Activity {
         int radioId = searchRadioGroup.getCheckedRadioButtonId();
         RadioButton radioButton = (RadioButton) findViewById(radioId);
         searchTypeTextView.setText(radioButton.getText());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mi = getMenuInflater();
+        mi.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+
+            case R.id.menu_about:
+                Dialog aboutDialog = new AboutDialog(this);
+                aboutDialog.show();
+                return true;
+
+            // Item not recognised...
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void findAllViewsById() {
