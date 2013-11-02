@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.androidquery.util.AQUtility;
 import com.bigfoot.android.R;
 
 /**
