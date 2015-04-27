@@ -16,6 +16,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * User: Neil Pattinson
@@ -44,7 +45,7 @@ public class FilmListAdapter extends ArrayAdapter<Movie> {
 
         Movie film = films.get(position);
         if (film != null) {
-            DateFormat df = new SimpleDateFormat("dd MMM yyyy");
+            DateFormat df = new SimpleDateFormat("dd MMM yyyy", Locale.UK);
             NumberFormat nf = new DecimalFormat("0.00");
             // AQuery handles all image retrieval, decoding and caching transparently.
             AQuery aq = new AQuery(view);
